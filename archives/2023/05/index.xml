@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2023/05 on Andys Notes</title>
+    <link>https://www.andylin666.com/archives/2023/05/</link>
+    <description>Recent content in 2023/05 on Andys Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language><atom:link href="https://www.andylin666.com/archives/2023/05/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[hugo]簡單易懂的 Hugo 入門教學：從安裝到基本使用 - 輕鬆打造個人網站</title>
+      <link>https://www.andylin666.com/hugo-basic-get-started/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/hugo-basic-get-started/</guid>
+      <description>hugo介紹 什麼是 Hugo?? hugo是最流行的靜態頁面生成器(Static Site Generator)之一，連官方都直接跩起來的聲稱自己是世界上最快的架站框架「The world’s fastest framework for building websites」。
+ 純靜態架構非常安全 速度快 對於SEO友善  近幾年來，也越來越多人開始將自己的wordpress個人網站或部落格轉成純靜態架構。 
+hugo 優勢 hugo有一個超級大的優勢，就是超快，不是只有快而已，無論是打包速度、載入速度、建置速度真的都是非常快，曾經在網路上看到一張很有意思的圖。
+除了快以外還包含了以下優勢:
+ 安全：由於每個頁面都是獨一無二的，從而減少了可能出現的安全漏洞 快速：減少網站訪問載入時間 周全：會把代管主機前端的 Varnish 網頁快取系統考慮在內 經濟：減少使用網頁代管主機的資源（CPU/RAM） 暫存：可以在發布內容到網站之前測試和修改  誰會需要 Hugo 由於hugo畢竟是靜態頁面生成器，並不像Wordpress有提供使用者後台管理讓不太會寫程式的人也能夠架站，因此在操作Hugo時還是要會基本的html、css、javascript才能夠完全客製化自己的網站哦。
+hugo安裝教學 由於不同的系統對於hugo安裝方法都不太一樣，以下是在 Windows、Mac 和 Linux 上安裝 Hugo 的基本步驟：
+在Windows上安裝 Hugo 請前往 Hugo 的官方網站下載最新版本的 Hugo。 解壓縮下載的文件，將 hugo.exe 文件放在一個易於訪問的地方，例如 C:\hugo。 將 C:\hugo 添加到您的 PATH 環境變量中。您可以在 此處 找到詳細的步驟。 現在您可以在命令提示符中運行 hugo 命令。
+  在Mac上安裝 Hugo 使用 Homebrew 安裝 Hugo。在終端中輸入以下命令：</description>
+    </item>
+    
+  </channel>
+</rss>

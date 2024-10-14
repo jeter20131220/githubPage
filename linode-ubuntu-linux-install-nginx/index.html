@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw">
+<head>
+    
+    
+    <title>Andys Notes | [linux]如何在Linode VPS上架設Ubuntu與安裝Nginx server (含帳號申請購買教學)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" sizes="64x64" href='/favicon/favicon.png' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Andys Notes | [linux]如何在Linode VPS上架設Ubuntu與安裝Nginx server (含帳號申請購買教學)" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.1c69f3bf0599a2791cc435f33334835fef8f19354685717088a314f87cc58028.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="架設網頁一般都會使用虛擬私有伺服器（VPS）來架設，而Linode是一家提供虛擬私有伺服器（VPS）主機服務的公司，如何在Linode VPS上架設Ubuntu與安裝Nginx(含Linode帳號申請購買教學)">
+<meta property="og:site_name" content="Andys Notes">
+<meta property="og:description" content="架設網頁一般都會使用虛擬私有伺服器（VPS）來架設，而Linode是一家提供虛擬私有伺服器（VPS）主機服務的公司，如何在Linode VPS上架設Ubuntu與安裝Nginx(含Linode帳號申請購買教學)">
+<meta property="og:url" content="https://www.andylin666.com/linode-ubuntu-linux-install-nginx/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="https://www.andylin666.com/linode-ubuntu-linux-install-nginx/">
+
+<meta name="twitter:description" content="架設網頁一般都會使用虛擬私有伺服器（VPS）來架設，而Linode是一家提供虛擬私有伺服器（VPS）主機服務的公司，如何在Linode VPS上架設Ubuntu與安裝Nginx(含Linode帳號申請購買教學)">
+<meta property="article:published_time" content="2023-04-08T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2023-04-08T00:00:00&#43;00:00">
+
+
+
+
+
+    
+<meta property="og:image" content="https://www.andylin666.com/img/linode-linux-ubuntu-install-nginx.webp">
+<meta property="og:image:url" content="https://www.andylin666.com/img/linode-linux-ubuntu-install-nginx.webp">
+    
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QL0S1XGBP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9QL0S1XGBP');
+    </script>
+    <i class="dark hidden"></i>
+</head><body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex items-center flex-no-shrink bg-gray-800 text-white mr-6">
+                <a href="https://www.andylin666.com/"><span class="font-semibold text-2xl tracking-tight">Andys Notes</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1"
+                        aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50"
+                    aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                    <a href="/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Home
+                    </a>
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    
+                    
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script><div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+  
+  <div class="col-span-3 lg:col-span-2 dark:text-white">
+    
+      <div class="bg-white dark:bg-warmgray-900 p-5 mb-4">
+        <h1 class="mb-2 text-4xl font-bold">[linux]如何在Linode VPS上架設Ubuntu與安裝Nginx server (含帳號申請購買教學)</h1>
+        <aside id="meta">
+          <div>
+            <section>
+              
+            </section>
+            
+            <div id="tags">
+              <span class="icon-local_offer mr-1"></span>
+              
+              <a href='https://www.andylin666.com/tags/linux'>linux</a> |
+              
+              <a href='https://www.andylin666.com/tags/nginx'>nginx</a> |
+              
+            </div>
+            
+          </div>
+        </aside>
+        
+        <img class="py-4" src="https://www.andylin666.com/img/linode-linux-ubuntu-install-nginx.webp">
+        
+        
+        <aside>
+        </aside>
+        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5">
+          <p>架設網頁一般都會使用虛擬私有伺服器（VPS）來架設，Linode 是一家提供虛擬私有伺服器（VPS）主機服務的公司，成立於2003年，算是非常老的牌子了，但是服務算是非常穩定。Linode 提供的 VPS 主機服務，可以讓用戶在網路上租用虛擬的 Linux 伺服器，用來架設網站、部署應用程式、儲存資料等。</p>
+          <div class="tableofcontent">
+            <div class="tableofcontent-container">
+              <p class="toc-title">目錄</p>
+              <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linode帳號註冊">Linode帳號註冊</a>
+      <ul>
+        <li><a href="#step1-點擊下方連結">Step1 點擊下方連結👇</a></li>
+        <li><a href="#step2-點擊sign-up-here註冊">Step2 點擊Sign up here註冊</a></li>
+        <li><a href="#step3-使用google帳戶註冊">Step3 使用google帳戶註冊</a></li>
+        <li><a href="#step4-手機簡訊認證">Step4 手機簡訊認證</a></li>
+        <li><a href="#step5-新增付款資料與帳單">Step5 新增付款資料與帳單</a></li>
+        <li><a href="#step6-註冊完成">Step6 註冊完成</a></li>
+      </ul>
+    </li>
+    <li><a href="#購買虛擬主機">購買虛擬主機</a></li>
+    <li><a href="#安裝nginx">安裝Nginx</a></li>
+  </ul>
+</nav>
+            </div>
+          </div>
+
+          <!-- 架設網頁一般都會使用虛擬私有伺服器（VPS）來架設，當然也會有人把網頁的服務架設在自己電腦上，但是考量網路穩定度，電費、硬體，或是停電那你架在自家的電腦的網頁服務也隨之而停。
+
+因此就會需要VPS，也就是虛擬專用伺服器，每個月只要付上幾百元租金，24小時不會停止運做，即使家裡斷電了，網頁依然持續運作。因此使用VPS會是以較低的成本來架設網頁的方法之一。 -->
+<!-- Linode 是一家提供虛擬私有伺服器（VPS）主機服務的公司，成立於2003年，算是非常老的牌子了，但是服務算是非常穩定。Linode 提供的 VPS 主機服務，可以讓用戶在網路上租用虛擬的 Linux 伺服器，用來架設網站、部署應用程式、儲存資料等。 -->
+<h2 id="linode帳號註冊">Linode帳號註冊</h2>
+<h3 id="step1-點擊下方連結">Step1 點擊下方連結👇</h3>
+<ul>
+<li><a href="https://login.linode.com/login" target="_blank">Linode註冊連結</a></li>
+</ul>
+<h3 id="step2-點擊sign-up-here註冊">Step2 點擊Sign up here註冊</h3>
+<p><img src="/img//blog/linode-signup.webp" alt="linode-signup"></p>
+<h3 id="step3-使用google帳戶註冊">Step3 使用google帳戶註冊</h3>
+<p><img src="/img//blog/linode-signup-google.webp" alt="linode-signup-google"></p>
+<h3 id="step4-手機簡訊認證">Step4 手機簡訊認證</h3>
+<p><img src="/img//blog/linode-phone-number.webp" alt="linode-phone-number-verification"></p>
+<h3 id="step5-新增付款資料與帳單">Step5 新增付款資料與帳單</h3>
+<p>這邊要注意的是地址跟姓名都要使用英文哦，新增信用卡後不會先扣款請放心。<br>
+郵局中文轉英文字地址的工具：</p>
+<ul>
+<li><a href="https://www.post.gov.tw/post/internet/SearchZone/index.jsp?ID=130112" target="_blank">郵局中文地址英譯</a></li>
+</ul>
+<p><img src="/img//blog/linode-add-payment.webp" alt="linode-add-payment"></p>
+<h3 id="step6-註冊完成">Step6 註冊完成</h3>
+<p><img src="/img//blog/linode-account-success.webp" alt="linode-account-success"></p>
+<h2 id="購買虛擬主機">購買虛擬主機</h2>
+<p>註冊完成後回到後台，可以看見Create Linode的按鈕。
+<img src="/img//blog/create-linode.webp" alt="create-linode"></p>
+<p>這邊如果以前沒買過VPS的可以參考我的設定，選擇Ubuntu 18.04 LTS LTS版本（Long-term support長期支援）。會選擇Ubuntu是除了資源較多以外對新手比較友善，當然如果有其他熟悉操作的系統也都可以直接去做選擇。</p>
+<!-- 如果對於Ubuntu18.04. LTS vs Ubuntu18.10的比較有興趣，可以參考以下文章。 -->
+<p><strong>Region:</strong><br>
+這邊主要選擇機房位置，這邊會根據你的所在地去做選擇，如果你是住在台灣選擇日本會比較好，因為距離比較近。若住在亞洲地區的話，則選擇日本或是新加坡。</p>
+<p><img src="/img//blog/linode-distributions.webp" alt="linode-distributions"></p>
+<p><strong>Linode Plan：</strong><br>
+這邊我們先點選Shared CPU，可以看到標準的話是Linode 2 GB ，這邊如果是要練習的話其實5 USD/月 就夠了，後續不夠用都可以進行升級。</p>
+<p>當然如果你的網站本身需要架設資料庫、跑一些比較大型的服務可以選擇更大的Linode 2 GB、或是Linode 4 GB，主要差別在於RAM (隨機存取記憶體) 、儲存空間等等。</p>
+<p><img src="/img//blog/linode-plan.webp" alt="linode-plan"></p>
+<p><strong>Linode Label:</strong> <br>
+這台主機的名稱，可以取專案名稱，未來你可以能會有好幾台VPS非常容易搞混，所以要輸入一個你可以清楚分辨的名稱，這邊要注意一下，這裏不支援 . 這個符號。</p>
+<p>Root密碼這邊要注意的就是不要取態簡單的密碼，root就是超級使用者最高權限。盡量包含大小寫然後密碼長一點，然後記住這個密碼，我們每次ssh連線都會用到。</p>
+<p><img src="/img//blog/linode-label-root-password.webp" alt="linode-label-root-password"></p>
+<p><strong>Optional Add-ons:</strong><br>
+這邊看你自己有沒有備份需求，如果後面有需求都可以再做加購，確認規格跟方案都沒問題後就可以按下Create Linode。</p>
+<p><img src="/img//blog/linode-add-oons.webp" alt="linode-add-oons"></p>
+<p>完整的設定請看👇
+<img src="/img//blog/create-linode-page.webp" alt="buy-linode-vps"></p>
+<p>按下Create Linode之後，他會需要一點時間安裝Ubuntu，看到轉圈圈轉完之後亮綠燈就完成了。這邊要記住妳個剛夠買的Linode ip位置，一般都是172.xxx.xxx.xxx之類的組合，這就是Server 的Ip位置。可以先複製起來，我們接下來要ssh連線過去安裝nginx。</p>
+<h2 id="安裝nginx">安裝Nginx</h2>
+<p>拿到IP位置之後，我們要透過終端機ssh連線過去過去。</p>
+<pre><code>ssh 帳號@剛剛購買Linode的IP位置
+</code></pre>
+<p>假設剛剛購買的IP位置是172.123.123.123，就輸入</p>
+<pre><code>ssh root@172.123.123.123
+</code></pre>
+<p>然後輸入密碼，這邊的密碼就是剛剛在購買Linode虛擬主機時，那邊設定的root密碼，輸入密碼直到看到這個畫面之後。</p>
+<p><img src="/img//blog/ssh-2.webp" alt="ssh-to-server"></p>
+<p>然後再輸入apt-get update，這個指定主要是新 Ubuntu Linux 套件庫資訊，更新會稍微跑一下。</p>
+<pre><code>apt-get update
+</code></pre>
+<p>更新完成後，就可以輸入apt-get install nginx，正式開始安裝nginx網頁司服器，沒錯nginx一行裝完了。</p>
+<pre><code>apt-get install nginx
+</code></pre>
+<p>之後在瀏覽器輸入自己的server ip位置後，看到以下畫面就代表成功了。</p>
+<p><img src="/img//blog/welcome-to-nginx.webp" alt="welcome-to-nginx"></p>
+<p>延伸閱讀：</p>
+<ul>
+<li><a href="/post/nginx-multiple-domains-on-one-server" target="_blank">[Nginx設定]Virtual Host Nginx http server以及多個網域共用一台主機設定</a></li>
+<li><a href="/post/nginx-certbot-lets-encrypt-addssh" target="_blank">[SSL]Ubuntu＋Nginx透過 Certbot 免費取得 Let&rsquo;s Encrypt SSL憑證</a></li>
+</ul>
+
+        </div>
+        
+        <aside id="meta">
+          
+        </aside>
+      </div>
+
+      <button id="goTopButton">
+        <img class="scrollTop mx-auto" src="/img/upload.png" width="20" height="20" alt="">
+      </button>
+      
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="mb-3">
+          <div id="disqus_thread"></div>
+<script>
+    
+
+    
+
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://rdnotes-2.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hidden lg:block lg:col-span-1">
+    
+    
+    
+    <div class="mb-3">
+    <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+        <label>
+            <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
+                placeholder="Search..." value="" name="q" aria-label="Search">
+        </label>
+        <input class="hidden" type="submit" value="Search">
+        <input type="hidden" name="sitesearch" value="https://www.andylin666.com/" />
+    </form>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<div class="bg-white panel mb-3 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 pl-3 dark:text-gray-300 font-bold">Tags</p>
+    <div class="panel-block p-2">
+        <a href='/tags/hugo'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                hugo
+            </span></a>
+        <a href='/tags/linux'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                linux
+            </span></a>
+        <a href='/tags/nginx'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                nginx
+            </span></a>
+        <a href='/tags/ssl'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                ssl
+            </span></a>
+    </div>
+</div>
+
+    
+    
+    
+
+<div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300 font-bold">Recent Posts</p>
+    <div class="mx-6">
+        <a href="/hugo-basic-get-started/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900  text-xl dark:text-white">[hugo]簡單易懂的 Hugo 入門教學：從安裝到基本使用 - 輕鬆打造個人網站</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/linode-ubuntu-linux-install-nginx/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900  text-xl dark:text-white">[linux]如何在Linode VPS上架設Ubuntu與安裝Nginx server (含帳號申請購買教學)</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/post/nginx-certbot-lets-encrypt-addssh/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900  text-xl dark:text-white">[SSL]Ubuntu＋Nginx透過 Certbot 免費取得 Let&#39;s Encrypt SSL憑證</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/post/nginx-multiple-domains-on-one-server/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900  text-xl dark:text-white">[Nginx設定]Virtual Host Nginx http server與多個網域共用一台主機設定</div>
+                    
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+    
+    
+    
+    
+    <div class="tableofcontent" style="position: sticky; top: 20px;">
+        <div id="TableofContentScroll" class="bg-white tableofcontent-container-side dark:bg-warmgray-900 dark:text-white" >
+            <div class="mx-6">
+                <p id="TableofContentTitle" class="toc-title">目錄</p>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linode帳號註冊">Linode帳號註冊</a>
+      <ul>
+        <li><a href="#step1-點擊下方連結">Step1 點擊下方連結👇</a></li>
+        <li><a href="#step2-點擊sign-up-here註冊">Step2 點擊Sign up here註冊</a></li>
+        <li><a href="#step3-使用google帳戶註冊">Step3 使用google帳戶註冊</a></li>
+        <li><a href="#step4-手機簡訊認證">Step4 手機簡訊認證</a></li>
+        <li><a href="#step5-新增付款資料與帳單">Step5 新增付款資料與帳單</a></li>
+        <li><a href="#step6-註冊完成">Step6 註冊完成</a></li>
+      </ul>
+    </li>
+    <li><a href="#購買虛擬主機">購買虛擬主機</a></li>
+    <li><a href="#安裝nginx">安裝Nginx</a></li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </div>
+    
+  
+</div>
+    
+
+  </div>
+</div>
+
+            </div>
+        </div><footer class="bg-gray-800 text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2024 <a href="https://www.andylin666.com/" class="duration-200 hover:opacity-50">Andys Notes</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+    
+    <script src="/js/index.js"></script>
+    
+</body>
+
+</html>

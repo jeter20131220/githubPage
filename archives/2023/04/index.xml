@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2023/04 on Andys Notes</title>
+    <link>https://www.andylin666.com/archives/2023/04/</link>
+    <description>Recent content in 2023/04 on Andys Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language><atom:link href="https://www.andylin666.com/archives/2023/04/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[linux]如何在Linode VPS上架設Ubuntu與安裝Nginx server (含帳號申請購買教學)</title>
+      <link>https://www.andylin666.com/linode-ubuntu-linux-install-nginx/</link>
+      <pubDate>Sat, 08 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/linode-ubuntu-linux-install-nginx/</guid>
+      <description>Linode帳號註冊 Step1 點擊下方連結👇  Linode註冊連結  Step2 點擊Sign up here註冊 Step3 使用google帳戶註冊 Step4 手機簡訊認證 Step5 新增付款資料與帳單 這邊要注意的是地址跟姓名都要使用英文哦，新增信用卡後不會先扣款請放心。
+郵局中文轉英文字地址的工具：
+ 郵局中文地址英譯  Step6 註冊完成 購買虛擬主機 註冊完成後回到後台，可以看見Create Linode的按鈕。 這邊如果以前沒買過VPS的可以參考我的設定，選擇Ubuntu 18.04 LTS LTS版本（Long-term support長期支援）。會選擇Ubuntu是除了資源較多以外對新手比較友善，當然如果有其他熟悉操作的系統也都可以直接去做選擇。
+Region:
+這邊主要選擇機房位置，這邊會根據你的所在地去做選擇，如果你是住在台灣選擇日本會比較好，因為距離比較近。若住在亞洲地區的話，則選擇日本或是新加坡。
+Linode Plan：
+這邊我們先點選Shared CPU，可以看到標準的話是Linode 2 GB ，這邊如果是要練習的話其實5 USD/月 就夠了，後續不夠用都可以進行升級。
+當然如果你的網站本身需要架設資料庫、跑一些比較大型的服務可以選擇更大的Linode 2 GB、或是Linode 4 GB，主要差別在於RAM (隨機存取記憶體) 、儲存空間等等。
+Linode Label: 這台主機的名稱，可以取專案名稱，未來你可以能會有好幾台VPS非常容易搞混，所以要輸入一個你可以清楚分辨的名稱，這邊要注意一下，這裏不支援 . 這個符號。
+Root密碼這邊要注意的就是不要取態簡單的密碼，root就是超級使用者最高權限。盡量包含大小寫然後密碼長一點，然後記住這個密碼，我們每次ssh連線都會用到。
+Optional Add-ons:
+這邊看你自己有沒有備份需求，如果後面有需求都可以再做加購，確認規格跟方案都沒問題後就可以按下Create Linode。
+完整的設定請看👇 按下Create Linode之後，他會需要一點時間安裝Ubuntu，看到轉圈圈轉完之後亮綠燈就完成了。這邊要記住妳個剛夠買的Linode ip位置，一般都是172.xxx.xxx.xxx之類的組合，這就是Server 的Ip位置。可以先複製起來，我們接下來要ssh連線過去安裝nginx。
+安裝Nginx 拿到IP位置之後，我們要透過終端機ssh連線過去過去。
+ssh 帳號@剛剛購買Linode的IP位置  假設剛剛購買的IP位置是172.123.123.123，就輸入</description>
+    </item>
+    
+  </channel>
+</rss>

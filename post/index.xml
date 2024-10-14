@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Andys Notes</title>
+    <link>https://www.andylin666.com/post/</link>
+    <description>Recent content in Posts on Andys Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.andylin666.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[hugo]簡單易懂的 Hugo 入門教學：從安裝到基本使用 - 輕鬆打造個人網站</title>
+      <link>https://www.andylin666.com/hugo-basic-get-started/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/hugo-basic-get-started/</guid>
+      <description>hugo介紹 什麼是 Hugo?? hugo是最流行的靜態頁面生成器(Static Site Generator)之一，連官方都直接跩起來的聲稱自己是世界上最快的架站框架「The world’s fastest framework for building websites」。
+ 純靜態架構非常安全 速度快 對於SEO友善  近幾年來，也越來越多人開始將自己的wordpress個人網站或部落格轉成純靜態架構。 
+hugo 優勢 hugo有一個超級大的優勢，就是超快，不是只有快而已，無論是打包速度、載入速度、建置速度真的都是非常快，曾經在網路上看到一張很有意思的圖。
+除了快以外還包含了以下優勢:
+ 安全：由於每個頁面都是獨一無二的，從而減少了可能出現的安全漏洞 快速：減少網站訪問載入時間 周全：會把代管主機前端的 Varnish 網頁快取系統考慮在內 經濟：減少使用網頁代管主機的資源（CPU/RAM） 暫存：可以在發布內容到網站之前測試和修改  誰會需要 Hugo 由於hugo畢竟是靜態頁面生成器，並不像Wordpress有提供使用者後台管理讓不太會寫程式的人也能夠架站，因此在操作Hugo時還是要會基本的html、css、javascript才能夠完全客製化自己的網站哦。
+hugo安裝教學 由於不同的系統對於hugo安裝方法都不太一樣，以下是在 Windows、Mac 和 Linux 上安裝 Hugo 的基本步驟：
+在Windows上安裝 Hugo 請前往 Hugo 的官方網站下載最新版本的 Hugo。 解壓縮下載的文件，將 hugo.exe 文件放在一個易於訪問的地方，例如 C:\hugo。 將 C:\hugo 添加到您的 PATH 環境變量中。您可以在 此處 找到詳細的步驟。 現在您可以在命令提示符中運行 hugo 命令。
+  在Mac上安裝 Hugo 使用 Homebrew 安裝 Hugo。在終端中輸入以下命令：</description>
+    </item>
+    
+    <item>
+      <title>[linux]如何在Linode VPS上架設Ubuntu與安裝Nginx server (含帳號申請購買教學)</title>
+      <link>https://www.andylin666.com/linode-ubuntu-linux-install-nginx/</link>
+      <pubDate>Sat, 08 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/linode-ubuntu-linux-install-nginx/</guid>
+      <description>Linode帳號註冊 Step1 點擊下方連結👇  Linode註冊連結  Step2 點擊Sign up here註冊 Step3 使用google帳戶註冊 Step4 手機簡訊認證 Step5 新增付款資料與帳單 這邊要注意的是地址跟姓名都要使用英文哦，新增信用卡後不會先扣款請放心。
+郵局中文轉英文字地址的工具：
+ 郵局中文地址英譯  Step6 註冊完成 購買虛擬主機 註冊完成後回到後台，可以看見Create Linode的按鈕。 這邊如果以前沒買過VPS的可以參考我的設定，選擇Ubuntu 18.04 LTS LTS版本（Long-term support長期支援）。會選擇Ubuntu是除了資源較多以外對新手比較友善，當然如果有其他熟悉操作的系統也都可以直接去做選擇。
+Region:
+這邊主要選擇機房位置，這邊會根據你的所在地去做選擇，如果你是住在台灣選擇日本會比較好，因為距離比較近。若住在亞洲地區的話，則選擇日本或是新加坡。
+Linode Plan：
+這邊我們先點選Shared CPU，可以看到標準的話是Linode 2 GB ，這邊如果是要練習的話其實5 USD/月 就夠了，後續不夠用都可以進行升級。
+當然如果你的網站本身需要架設資料庫、跑一些比較大型的服務可以選擇更大的Linode 2 GB、或是Linode 4 GB，主要差別在於RAM (隨機存取記憶體) 、儲存空間等等。
+Linode Label: 這台主機的名稱，可以取專案名稱，未來你可以能會有好幾台VPS非常容易搞混，所以要輸入一個你可以清楚分辨的名稱，這邊要注意一下，這裏不支援 . 這個符號。
+Root密碼這邊要注意的就是不要取態簡單的密碼，root就是超級使用者最高權限。盡量包含大小寫然後密碼長一點，然後記住這個密碼，我們每次ssh連線都會用到。
+Optional Add-ons:
+這邊看你自己有沒有備份需求，如果後面有需求都可以再做加購，確認規格跟方案都沒問題後就可以按下Create Linode。
+完整的設定請看👇 按下Create Linode之後，他會需要一點時間安裝Ubuntu，看到轉圈圈轉完之後亮綠燈就完成了。這邊要記住妳個剛夠買的Linode ip位置，一般都是172.xxx.xxx.xxx之類的組合，這就是Server 的Ip位置。可以先複製起來，我們接下來要ssh連線過去安裝nginx。
+安裝Nginx 拿到IP位置之後，我們要透過終端機ssh連線過去過去。
+ssh 帳號@剛剛購買Linode的IP位置  假設剛剛購買的IP位置是172.123.123.123，就輸入</description>
+    </item>
+    
+    <item>
+      <title>[SSL]Ubuntu＋Nginx透過 Certbot 免費取得 Let&#39;s Encrypt SSL憑證</title>
+      <link>https://www.andylin666.com/post/nginx-certbot-lets-encrypt-addssh/</link>
+      <pubDate>Sat, 25 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/post/nginx-certbot-lets-encrypt-addssh/</guid>
+      <description>我們透過Nginx設定完http server後，會發現網域前面左上角也沒有🔓符號，所以google瀏覽器會視為不安全，這篇主要說明如何在Nginx透過 Certbot 免費取得 Let&amp;rsquo;s Encrypt SSL憑證，讓自己的網頁從http變成https。。
+上一篇文章有提到Nginx http server設定
+ [Nginx設定]Virtual Host Nginx http server以及多個網域共用一台主機設定  環境:
+ Ubuntu 18.04 nginx 1.14.0  安裝Certbot 這邊一樣需要先ssh上主機，關於ssh的連線有在 上一篇做說明。ssh上主機後輸入以下指令：
+$ sudo add-apt-repository ppa:certbot/certbot $ sudo apt install python-certbot-nginx  Nginx http server 設定 雖然Certbot在申請完SSL憑證之後會幫你修改Nginx的設定，但是我們要先將要申請SSL憑證的網域裡nginx的.conf檔當中的server_name先設定好。
+server{ listen 80; # Certbot會找到與產生憑證相符的網域，並且把設定加這個區塊裡 server_name www.example1.com ; # 你要申請SSL網域 root /var/www/website2; # 你要申請SSL網域的網頁檔案路徑 location / { index index.html index.hml; } }  在申請SSL憑證的時候，Certbot會根據你設定在nginx當中的server_name找當與該網域相符的檔案做修改。
+獲取憑證(SSL Certificate) 使用 nginx 執行 certbot，-d代表指令我們要申請憑證的子網域。</description>
+    </item>
+    
+    <item>
+      <title>[Nginx設定]Virtual Host Nginx http server與多個網域共用一台主機設定</title>
+      <link>https://www.andylin666.com/post/nginx-multiple-domains-on-one-server/</link>
+      <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/post/nginx-multiple-domains-on-one-server/</guid>
+      <description>使用情境：兩個網域要指向同一個 IP 的設定。
+假設有兩個網域www.example1.com、www.example.com分別要指向website1、website2，而這兩個網頁的檔案內分別都放置各自的index.html。而假設主機的IP是192.162.123.123。
+ www.example1.com 要指向192.162.123.123 www.example2.com也要指向192.162.123.123  nginx多個網域共用一台主機，需要做兩個設定：
+ Nginx設定 DNS設定  Nginx設定 $ ssh 帳號@主機  example ssh to 192.162.123.123:
+$ ssh root＠192.162.123.123  -- 輸入ssh指令按下enter後可以看到輸入密碼的欄位 密碼輸入成功後，如果出現以下畫面就表示ssh成功了 延續上圖看到的畫面之後，現在我們要找到nginx所在的路徑，一般都會在/etc/nginx。因此我們直接cd /etc/nginx資料夾。
+$ root@localhost:~# cd /etc/nginx  當我們進入到/etc/nginx之後，輸入ls之後會看到很多檔案。
+ $ root@localhost:/etc/nginx/# ls  而我們今天會用到 conf.d資料夾、nginx.conf檔案， 畫面停留在上圖之後
+$ cd conf.d/  Step1:在這個路徑下新增檔案
+$ sudo touch website1.conf  Step2:編輯新增的檔案website1.conf
+ $ sudo vi website1.conf  Step3:進入編輯模式後，要按 i 才可以編輯，然後貼上這段。
+server{ listen 80; server_name www.</description>
+    </item>
+    
+  </channel>
+</rss>
